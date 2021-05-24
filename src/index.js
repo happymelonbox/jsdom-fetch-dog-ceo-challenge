@@ -8,10 +8,17 @@ function fetchDog(){
 
 function dawgs(dogs){
     let array = dogs.message
+    let dogImages = document.getElementById('dog-image-container')
     console.log(array)
     for(i=0;i<array.length;i++){
         let each = array[i]
         console.log(each)
+        let img = dogImages.appendChild(document.createElement('img'))
+        Object.assign(img,{
+            src: `${array[i]}`,
+            height: 200,
+            width: 300
+        })
     }
 
 }
