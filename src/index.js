@@ -29,8 +29,13 @@ function fetchBreeds(){
 }
 
 function breedsah(breeds){
-    console.log(breeds)
+    let dogBreeds = breeds.message
+    Object.keys(dogBreeds).forEach(dog => {
+        console.log(dog)
+    })
 }
+
+
 
 console.log('%c HI', 'color: firebrick')
 document.addEventListener('DOMContentLoaded', function(){
