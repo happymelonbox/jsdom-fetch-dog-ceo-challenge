@@ -18,10 +18,22 @@ function dawgs(dogs){
             height: 200,
             width: 300
         })})
-    }
+}
 
+function fetchBreeds(){
+    const breedUrl = 'https://dog.ceo/api/breeds/list/all'
+    fetch(breedUrl)
+    .then(response => response.json())
+    .then(json =>
+        breedsah(json))
+}
+
+function breedsah(breeds){
+    console.log(breeds)
+}
 
 console.log('%c HI', 'color: firebrick')
 document.addEventListener('DOMContentLoaded', function(){
     fetchDog()
+    fetchBreeds()
 })
