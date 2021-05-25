@@ -50,16 +50,20 @@ function fetchBreedsForDropdown(){
 
 function dropDownBreeds(breeds){
     let dogBreeds = breeds.message
-    let startsWithA = Object.keys(dogBreeds).filter(dog => dog[0] === 'A' || dog[0] === 'a')
+    let startsWithA = Object.keys(dogBreeds).filter(dog => {
+        if(dog[0] === 'A' || dog[0] === 'a'){
+            return `<li>${dog}</li>`
+        }})
     let startsWithB = Object.keys(dogBreeds).filter(dog => dog[0] === 'B' || dog[0] === 'b')
     let startsWithC = Object.keys(dogBreeds).filter(dog => dog[0] === 'C' || dog[0] === 'c')
     let startsWithD = Object.keys(dogBreeds).filter(dog => dog[0] === 'D' || dog[0] === 'd')
     let dropDown = document.getElementById('breed-dropdown')
     let dogBreedList = document.getElementById('dog-breeds')
-    dropDown.addEventListener('change', function(){
-        if (dropDown.value === 'a'){return breedsah(startsWithA)
+    dropDown.addEventListener('change', function(event){
+        dogBreedList.innerHTML = startsWithA
+        console.log(startsWithA)
     }
-})
+)
 }
 
 console.log('%c HI', 'color: firebrick')
