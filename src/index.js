@@ -1,3 +1,5 @@
+
+//Dog images at top of screen
 function fetchDog(){
     const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
     fetch(`${imgUrl}`)
@@ -17,6 +19,7 @@ function dawgs(dogs){
             width: 300
         })})
 }
+//Breed List
 
 function fetchBreeds(){
     const breedUrl = 'https://dog.ceo/api/breeds/list/all'
@@ -53,17 +56,34 @@ function dropDownBreeds(breeds){
     let startsWithC = Object.keys(dogBreeds).filter(dog => dog[0] === 'C' || dog[0] === 'c')
     let startsWithD = Object.keys(dogBreeds).filter(dog => dog[0] === 'D' || dog[0] === 'd')
     let dropDown = document.getElementById('breed-dropdown')
-    let dogBreedList = document.getElementById('dog-breeds')
-    function loopy(obj){
-        for(i=0; i < obj.length; i++){
-            let listItem = dogBreedList.appendChild(document.createElement('li'))
-            listItem.innerHTML = obj[i]
-            console.log(listItem)
+    //Event listener for dropdown change
+    dropDown.addEventListener('change', function(){
+        document.getElementById('dog-breeds').style.display = 'none'
+        let newList = document.createElement('ul')
+        document.body.appendChild(newList)
+        if (dropDown.value === 'a' || dropDown.value === 'A'){
+            startsWithA.filter(dog => {
+            let listItem = newList.appendChild(document.createElement('li'))
+            listItem.innerHTML = dog
+            newList.setAttribute('class', 'a')
+            })
+        } else if (dropDown.value === 'b' || dropDown.value === 'B'){
+            startsWithB.filter(dog => {
+            let listItem = newList.appendChild(document.createElement('li'))
+            listItem.innerHTML = dog
+            })
+        } else if (dropDown.value === 'c' || dropDown.value === 'C'){
+            startsWithC.filter(dog => {
+            let listItem = newList.appendChild(document.createElement('li'))
+            listItem.innerHTML = dog
+            })
+        } else if (dropDown.value === 'D' || dropDown.value === 'D'){
+            startsWithD.filter(dog => {
+            let listItem = newList.appendChild(document.createElement('li'))
+            listItem.innerHTML = dog
+            })
         }
-    }
-    console.log(startsWithA)
-    loopy(startsWithA)
-// )
+    })
 }
 
 console.log('%c HI', 'color: firebrick')
