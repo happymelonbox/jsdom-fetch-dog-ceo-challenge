@@ -61,27 +61,24 @@ function dropDownBreeds(breeds){
         document.getElementById('dog-breeds').style.display = 'none'
         let newList = document.createElement('ul')
         document.body.appendChild(newList)
+        function addNewListItems(array){
+            array.filter(dog => {
+                let listItem = newList.appendChild(document.createElement('li'))
+                listItem.innerHTML = dog
+            })
+        }
         if (dropDown.value === 'a' || dropDown.value === 'A'){
-            startsWithA.filter(dog => {
-            let listItem = newList.appendChild(document.createElement('li'))
-            listItem.innerHTML = dog
+            addNewListItems(startsWithA)
             newList.setAttribute('class', 'a')
-            })
         } else if (dropDown.value === 'b' || dropDown.value === 'B'){
-            startsWithB.filter(dog => {
-            let listItem = newList.appendChild(document.createElement('li'))
-            listItem.innerHTML = dog
-            })
+            addNewListItems(startsWithB)
+            newList.setAttribute('class', 'b')
         } else if (dropDown.value === 'c' || dropDown.value === 'C'){
-            startsWithC.filter(dog => {
-            let listItem = newList.appendChild(document.createElement('li'))
-            listItem.innerHTML = dog
-            })
+            addNewListItems(startsWithC)
+            newList.setAttribute('class', 'c')
         } else if (dropDown.value === 'D' || dropDown.value === 'D'){
-            startsWithD.filter(dog => {
-            let listItem = newList.appendChild(document.createElement('li'))
-            listItem.innerHTML = dog
-            })
+            addNewListItems(startsWithD)
+            newList.setAttribute('class', 'd')
         }
     })
 }
