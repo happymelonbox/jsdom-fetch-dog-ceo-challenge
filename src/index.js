@@ -9,9 +9,7 @@ function fetchDog(){
 function dawgs(dogs){
     let array = dogs.message
     let dogImages = document.getElementById('dog-image-container')
-    console.log(array)
     array.filter(i => {each = i
-        console.log(each)
         let img = dogImages.appendChild(document.createElement('img'))
         Object.assign(img,{
             src: `${each}`,
@@ -50,20 +48,22 @@ function fetchBreedsForDropdown(){
 
 function dropDownBreeds(breeds){
     let dogBreeds = breeds.message
-    let startsWithA = Object.keys(dogBreeds).filter(dog => {
-        if(dog[0] === 'A' || dog[0] === 'a'){
-            return `<li>${dog}</li>`
-        }})
+    let startsWithA = Object.keys(dogBreeds).filter(dog => dog[0] === 'A' || dog[0] === 'a')
     let startsWithB = Object.keys(dogBreeds).filter(dog => dog[0] === 'B' || dog[0] === 'b')
     let startsWithC = Object.keys(dogBreeds).filter(dog => dog[0] === 'C' || dog[0] === 'c')
     let startsWithD = Object.keys(dogBreeds).filter(dog => dog[0] === 'D' || dog[0] === 'd')
     let dropDown = document.getElementById('breed-dropdown')
     let dogBreedList = document.getElementById('dog-breeds')
-    dropDown.addEventListener('change', function(event){
-        dogBreedList.innerHTML = startsWithA
-        console.log(startsWithA)
+    function loopy(obj){
+        for(i=0; i < obj.length; i++){
+            let listItem = dogBreedList.appendChild(document.createElement('li'))
+            listItem.innerHTML = obj[i]
+            console.log(listItem)
+        }
     }
-)
+    console.log(startsWithA)
+    loopy(startsWithA)
+// )
 }
 
 console.log('%c HI', 'color: firebrick')
