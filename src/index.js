@@ -55,6 +55,7 @@ function dropDownBreeds(breeds){
     let startsWithB = Object.keys(dogBreeds).filter(dog => dog[0] === 'B' || dog[0] === 'b')
     let startsWithC = Object.keys(dogBreeds).filter(dog => dog[0] === 'C' || dog[0] === 'c')
     let startsWithD = Object.keys(dogBreeds).filter(dog => dog[0] === 'D' || dog[0] === 'd')
+    let dropDown = document.getElementById('breed-dropdown')
     function addNewListItems(array, className){
         let newList = document.createElement('ul')
         document.body.appendChild(newList)
@@ -74,16 +75,18 @@ function dropDownBreeds(breeds){
 
     dropDown.addEventListener('change', function(){
         document.getElementById('dog-breeds').style.display = 'none'
-        let dropDown = document.getElementById('breed-dropdown')
 
         if (dropDown.value === 'a' || dropDown.value === 'A'){
-
+            document.querySelector('.a').style.display = "block"
+            document.querySelector('.b', '.c', '.d').style.display = 'none'
         } else if (dropDown.value === 'b' || dropDown.value === 'B'){
-
+            document.querySelector('.b').style.display = "block"
         } else if (dropDown.value === 'c' || dropDown.value === 'C'){
-
+            document.querySelector('.c').style.display = "block"
         } else if (dropDown.value === 'd' || dropDown.value === 'D'){
-
+            document.querySelector('.d').style.display = "block"
+        } else {
+            dogBreedList.style.display = "block"
         }
     })
 }
