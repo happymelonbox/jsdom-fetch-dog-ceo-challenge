@@ -55,29 +55,35 @@ function dropDownBreeds(breeds){
     let startsWithB = Object.keys(dogBreeds).filter(dog => dog[0] === 'B' || dog[0] === 'b')
     let startsWithC = Object.keys(dogBreeds).filter(dog => dog[0] === 'C' || dog[0] === 'c')
     let startsWithD = Object.keys(dogBreeds).filter(dog => dog[0] === 'D' || dog[0] === 'd')
-    let dropDown = document.getElementById('breed-dropdown')
-    //Event listener for dropdown change
-    dropDown.addEventListener('change', function(){
-        document.getElementById('dog-breeds').style.display = 'none'
+    function addNewListItems(array, className){
         let newList = document.createElement('ul')
         document.body.appendChild(newList)
-        newList.setAttribute('class', `${dropDown.value}`)
-        function addNewListItems(array){
-            array.filter(dog => {
+        newList.setAttribute('class', `${className}`)
+        newList.style.display = "none"
+        array.filter(dog => {
                 let listItem = newList.appendChild(document.createElement('li'))
                 listItem.innerHTML = dog
             })
         }
+        addNewListItems(startsWithA, 'a')
+        addNewListItems(startsWithB, 'b')
+        addNewListItems(startsWithC, 'c')
+        addNewListItems(startsWithD, 'd')
+
+    //Event listener for dropdown change
+
+    dropDown.addEventListener('change', function(){
+        document.getElementById('dog-breeds').style.display = 'none'
+        let dropDown = document.getElementById('breed-dropdown')
+
         if (dropDown.value === 'a' || dropDown.value === 'A'){
-            addNewListItems(startsWithA)
-            let chewy = document.getElementsByClassName('b c d')
-            console.log(chewy)
+
         } else if (dropDown.value === 'b' || dropDown.value === 'B'){
-            addNewListItems(startsWithB)
+
         } else if (dropDown.value === 'c' || dropDown.value === 'C'){
-            addNewListItems(startsWithC)
+
         } else if (dropDown.value === 'd' || dropDown.value === 'D'){
-            addNewListItems(startsWithD)
+
         }
     })
 }
