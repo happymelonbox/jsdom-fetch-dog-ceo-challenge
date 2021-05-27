@@ -61,6 +61,7 @@ function dropDownBreeds(breeds){
         document.getElementById('dog-breeds').style.display = 'none'
         let newList = document.createElement('ul')
         document.body.appendChild(newList)
+        newList.setAttribute('class', `${dropDown.value}`)
         function addNewListItems(array){
             array.filter(dog => {
                 let listItem = newList.appendChild(document.createElement('li'))
@@ -69,16 +70,14 @@ function dropDownBreeds(breeds){
         }
         if (dropDown.value === 'a' || dropDown.value === 'A'){
             addNewListItems(startsWithA)
-            newList.setAttribute('class', 'a')
+            let chewy = document.getElementsByClassName('b c d')
+            console.log(chewy)
         } else if (dropDown.value === 'b' || dropDown.value === 'B'){
             addNewListItems(startsWithB)
-            newList.setAttribute('class', 'b')
         } else if (dropDown.value === 'c' || dropDown.value === 'C'){
             addNewListItems(startsWithC)
-            newList.setAttribute('class', 'c')
-        } else if (dropDown.value === 'D' || dropDown.value === 'D'){
+        } else if (dropDown.value === 'd' || dropDown.value === 'D'){
             addNewListItems(startsWithD)
-            newList.setAttribute('class', 'd')
         }
     })
 }
