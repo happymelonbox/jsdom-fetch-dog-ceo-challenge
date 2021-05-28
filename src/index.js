@@ -65,30 +65,43 @@ function dropDownBreeds(breeds){
                 let listItem = newList.appendChild(document.createElement('li'))
                 listItem.innerHTML = dog
             })
+    }
+    addNewListItems(startsWithA, 'a')
+    addNewListItems(startsWithB, 'b')
+    addNewListItems(startsWithC, 'c')
+    addNewListItems(startsWithD, 'd')
+
+    //Event listener for dropdown change - only displays items starting with the letter selected.
+
+dropDown.addEventListener('change', function(){
+    document.getElementById('dog-breeds').style.display = 'none'
+    let dropDownValue = dropDown.value
+    function changeDisplay(arg){
+        for(i=0;i<arg.length;i++){
+            arg[i].style.display = 'none'
         }
-        addNewListItems(startsWithA, 'a')
-        addNewListItems(startsWithB, 'b')
-        addNewListItems(startsWithC, 'c')
-        addNewListItems(startsWithD, 'd')
-
-    //Event listener for dropdown change
-
-    dropDown.addEventListener('change', function(){
-        document.getElementById('dog-breeds').style.display = 'none'
-
-        if (dropDown.value === 'a' || dropDown.value === 'A'){
-            document.querySelector('.a').style.display = "block"
-            document.querySelector('.b', '.c', '.d').style.display = 'none'
-        } else if (dropDown.value === 'b' || dropDown.value === 'B'){
-            document.querySelector('.b').style.display = "block"
-        } else if (dropDown.value === 'c' || dropDown.value === 'C'){
-            document.querySelector('.c').style.display = "block"
-        } else if (dropDown.value === 'd' || dropDown.value === 'D'){
-            document.querySelector('.d').style.display = "block"
-        } else {
-            dogBreedList.style.display = "block"
-        }
-    })
+    }
+    if (dropDownValue){
+    if (dropDownValue === 'a' || dropDownValue === 'A'){
+        document.querySelectorAll('.a')[0].style.display = "block"
+        let remaining = document.querySelectorAll('.b, .c, .d')
+        changeDisplay(remaining)
+    } else if (dropDownValue === 'b' || dropDownValue === 'B'){
+        document.querySelectorAll('.b')[0].style.display = "block"
+        let remaining = document.querySelectorAll('.a, .c, .d')
+        changeDisplay(remaining)
+    } else if (dropDownValue === 'c' || dropDownValue === 'C'){
+        document.querySelectorAll('.c')[0].style.display = "block"
+        let remaining = document.querySelectorAll('.a, .b, .d')
+        changeDisplay(remaining)
+    } else if (dropDownValue === 'd' || dropDownValue === 'D'){
+        document.querySelectorAll('.d')[0].style.display = "block"
+        let remaining = document.querySelectorAll('.a, .b, .c')
+        changeDisplay(remaining)
+    } else {
+        dogBreedList.style.display = "block"
+    }
+}})
 }
 
 console.log('%c HI', 'color: firebrick')
